@@ -1,0 +1,72 @@
+<html>
+<head>
+<style>
+  html{
+    scroll-behavior: smooth;
+  }
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: #777 0px 0px 5px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+  transform: scale(1.05); /* Scale effect on hover */
+  transition: transform 0.3s; /* Animation */
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s; /* Animation */
+  cursor: pointer;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="gallery">
+  <a href="bugatti.jpg">
+    <img src="bugatti.jpg" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">project 5</div>
+</div>
+
+<div class="gallery">
+  <a href="bugatti.jpg">
+    <img src="bugatti.jpg" alt="Forest" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a href="bugatti.jpg">
+    <img src="bugatti.jpg" alt="Northern Lights" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a href="bugatti.jpg">
+    <img src="bugatti.jpg" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+</body>
+</html>

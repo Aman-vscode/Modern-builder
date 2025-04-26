@@ -1,0 +1,64 @@
+<html>
+<head>
+<style>
+  html{
+    scroll-behavior: smooth;
+  }
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: #777 0px 0px 5px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+  transform: scale(1.05); /* Scale effect on hover */
+  transition: transform 0.3s; /* Animation */
+}
+
+div.gallery img {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s; /* Animation */
+  cursor: pointer;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+div.gallery video {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s; /* Animation */
+  cursor: pointer;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+</style>
+</head>
+<body>
+  <div class="gallery">
+    <a href="pic3.jpg">
+      <img src="pic3.jpg" alt="Cinque Terre" width="600" height="400">
+    </a>
+  </div>
+<div class="gallery">
+  <a href="vedio3.mp4">
+  <video width="180" controls>
+    <source src="vedio3.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video></a>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      *{
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #000000;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      header {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        background: linear-gradient(90deg, #ffea00ce, #008cffa7);
+      }
+      header img {
+        width: 100%;
+        height: auto;
+      }
+      header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0;
+      }
+      header p {
+        font-size: 1.2rem;
+        margin: 5px 0;
+      }
+      header div{
+        position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          text-align: center;
+          width: 90%;
+          height: auto;
+          box-sizing: border-box;
+      }
+      @media screen and (max-width: 700px) { /* It only works on small screen sizes divice */
+        header h1 { 
+          font-size: 1.8rem;
+        }
+
+        header p {
+          font-size: 0.9rem;
+        }
+
+        header div {
+          width: 95%;
+        }
+      }
+      nav {
+        background: #3f3f3f;
+        color: #fff;
+        padding: 10px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      section {
+        padding: 20px;
+        text-align: left;
+      }
+      .services {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .service {
+        background: #fff;
+        margin: 10px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 300px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 5);
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .service:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      .service h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #333;
+      }
+      .service p {
+        margin: 10px 0 0;
+        font-size: 1em;
+        color: #666;
+      }
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 20px;
+      }
+      /* Dark Theme Styles */
+      body.dark {
+        background-color: #000000;
+        color: #fff;
+      }
+      body.dark nav {
+        background: #181818;
+      }
+      body.dark .service {
+        background: #1b1b1b;
+        border-color: #000000;
+        box-shadow: #f4f4f4 1px 1px 7px;
+      }
+      body.dark footer {
+        background: #151515;
+      }
+      body.dark #themeButton {
+        background-color: #333;
+        color: #fff;
+      }
+      body.dark #themeButton:hover {
+        background-color: #444;
+      }
+      section {
+        background: #fff;
+        margin: 10px;
+        padding: 20px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        box-shadow: #000000 1px 1px 7px;
+      }
+      body.dark section {
+        background: #202020;
+        border-color: #000000;
+        box-shadow: #f4f4f4 1px 1px 6px;
+      }
+      h2 {
+        text-align: center;
+      }
+      #themeButton {
+        padding: 7px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #fe7504;
+        color: white;
+        font-weight: bold;
+      }
+      #themeButton:hover {
+        background-color: #c46f0e;
+      }
+      body.dark .service h3 {
+        margin: 0;
+        font-size: 1.5em;
+        color: #ffffff;
+      }
+      body.dark .service p {
+        margin: 10px 0 0;
+        font-size: 1em;
+        color: #fcfbfb;
+      }
+      body.dark .service:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      }
+      #slideMenu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        background: #ff6f00e6;
+        color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1003;
+        padding: 20px;
+        display: none;
+      }
+      #slideMenu a {
+        text-decoration: none; /* Ensure no underline by default */
+        color: white; /* Default text color */
+      }
+      #slideMenu a:hover {
+        text-decoration: underline; /* Show underline on hover */
+      }
+      #closeMenu {
+        background: none;
+          border: none;
+          color: white;
+          font-size: 1.2em;
+          cursor: pointer;
+          margin-bottom: 20px;
+      }
+      #close {
+        background-color: #1515154b;
+        height: 100%;
+        width: 100%;
+        z-index: 1002;
+        position: fixed;
+        display: none;
+        top: 0;
+        border: none;
+      }
+      #menuButton {
+      background: none;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+      }
+      @keyframes colorChange {
+      0% {
+        color: #ff0000;
+      }
+      25% {
+        color: #00ff00;
+      }
+      50% {
+        color: #0000ff;
+      }
+      75% {
+        color: #ffff00;
+      }
+      100% {
+        color: #ff0000;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="close"></button>
+    <header>
+      <img src="template.jpg" alt="template logo" />
+    </header>
+    <nav>
+      <div style="display: flex; align-items: center">
+        <button id="menuButton">
+          ☰ Menu
+        </button>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <button id="themeButton" aria-label="Switch Theme">
+          <b>Theme🎨</b>
+        </button>
+        <img src="logo.png" style="width: 50px; height: 50px" />
+      </div>
+    </nav>
+<!-- Text show when javascript is not working -->
+    <noscript> 
+      <p style="text-align: center; color: red">
+        JavaScript is required to switch themes. Please enable JavaScript in
+        your browser.
+      </p>
+    </noscript>
+    <div id="welcome" style="animation: colorChange 5s linear infinite;text-align: center;">
+      <h2>Welcome to Modern Builder's</h2>
+      <p>Your trusted partner in construction and building solutions</p>
+      <p>"Let Us Make Your Dream Home"</p>
+    </div>
+    <!--  Sliding Menu -->
+    <div id="slideMenu">
+      <button id="closeMenu"> ✖ Close </button>
+      <a href="#about" style="display: block; margin: 10px 0">About Us</a>
+      <a href="#services" style="display: block; margin: 10px 0">Services</a>
+      <a href="#contact" style="display: block; margin: 10px 0">Contact</a>
+      <a href="projects.html" style="display: block; margin: 10px 0">Projects</a>
+      <a href="building-material.html" style="display: block; margin: 10px 0">Building Materials</a>
+    </div>
+    <section id="about">
+      <h2>About Us</h2>
+      <h3>We Build More Than Houses — We Build Homes</h3>
+      <p>
+        At Modern Builder's, we're proud to design, build, and sell
+        high-quality homes that blend modern living with lasting value. As a
+        trusted home builder and developer, we take pride in every project —
+        from the first blueprint to the final brick.
+      </p>
+      <h3>Quality Craftsmanship, From the Ground Up</h3>
+      <p>
+        Every home we create is built with attention to detail, durable
+        materials, and a commitment to excellence. We don’t cut corners — we
+        build with purpose, passion, and precision.
+      </p>
+      <p>
+        Whether you're a first-time buyer or looking for your forever home, our
+        properties are designed to meet your needs, match your style, and exceed
+        your expectations.
+      </p>
+      <h3>Your Dream Home, Made Simple</h3>
+      <p>
+        We believe buying a new home should be exciting — not overwhelming.
+        That’s why we guide you through every step, offering clear
+        communication, honest pricing, and homes ready for life’s next chapter.
+      </p>
+      <h3>Let’s Build Your Future</h3>
+      <p>
+        Explore our available homes or get in touch to learn more about upcoming
+        projects. At Modern Builder's, your future starts here.
+      </p>
+      <h3 style="color: rgb(250, 128, 27);">NOTE:- Provide high quality material</h3>
+      <p style="color: rgb(250, 128, 27);">We are not only experts in real state and home constructions but also suppliers of premium building materials — making us your one-stop solution for all housing needs.</p>
+    </section>
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <button
+          class="service"
+          onclick="window.location.href='projects.html';"
+        >
+        <h3>Real Estate Developer</h3>
+        <p>Making and selling homes.</p>
+        <p>(click to view)</p>
+      </button>
+      <button
+      class="service"
+      onclick="window.location.href='building-material.html';"
+      >
+      <h3>Building Materials</h3>
+      <p>We also offer high quality building materials to support your projects from the ground up.</p>
+          <p>(click to view)</p>
+        </button>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>We’d love to hear from you!</p>
+      <p>
+        Whether you’re interested in one of our homes, have questions about our
+        current projects, or just want to connect — our team is here to help.
+      </p>
+      <h3>Details:-</h3>
+      <b>
+        <p>Email: mananshukla198@gmail.com</p>
+        <p>Phone: +91 89607 40528</p>
+      </b>
+      <p>
+        Have a question or message for us? Send us an email or give us a call —
+        we’ll get back to you as soon as possible.
+      </p>
+      <p>We look forward to helping you find your perfect home.</p>
+    </section>
+    <footer>
+      <p>&copy; 2025 Personal Website. All rights reserved.</p>
+    </footer>
+    <script>
+      const menuButton = document.getElementById("menuButton");// Variables used in javascript
+      const closeMenu = document.getElementById("closeMenu");
+      const slideMenu = document.getElementById("slideMenu");
+      const menuLinks = slideMenu.querySelectorAll("a");
+      const close = document.getElementById("close");
+      
+      menuButton.addEventListener("click", () => {
+        slideMenu.style.display = "block";
+        close.style.display = "block"; // Show the menu
+        menuButton.style.display = "none"; // Hide the menu button
+      });
+
+      closeMenu.addEventListener("click", () => {
+        slideMenu.style.display = "none";
+        close.style.display = "none"; // Hide the menu
+        menuButton.style.display = "block"; // Show the menu button again
+      });
+      
+      close.addEventListener("click", () => {
+        slideMenu.style.display = "none";
+        close.style.display = "none"; // Hide the menu
+        menuButton.style.display = "block"; // Show the menu button again
+      });
+      
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          slideMenu.style.display = "none"; // Hide the menu when a link is clicked
+          close.style.display = "none";
+          menuButton.style.display = "block"; // Show the menu button again
+        });
+      });
+      
+      const themeButton = document.getElementById("themeButton");// Dark theme button
+      themeButton.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+      });
+      </script>
+  </body>
+  </html>
+  
