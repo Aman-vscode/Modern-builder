@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3 ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-item img {
+      width: 360px;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Photo Gallery</h1>
+  <div class="gallery-container" id="gallery-container">
+    <!-- Gallery items will be dynamically added here -->
+  </div>
+
+  <script>
+    // Array of image URLs
+    const imageUrls = [
+        "vedio1.jpg",
+      "pic2.jpg",
+      "pic3.jpg",
+      "pic4.jpg",
+      "pic4p.jpg",
+      "photo1.jpg",
+      "photo2.jpg",
+      "photo3.jpg",
+      "photo4.jpg",
+        "photo5.jpg",
+        "photo6.jpg",
+    ];
+
+    const galleryContainer = document.getElementById("gallery-container");
+
+    // Dynamically add images to the gallery
+    imageUrls.forEach(url => {
+      const galleryItem = document.createElement("div");
+      galleryItem.classList.add("gallery-item");
+      galleryItem.innerHTML = `<a href="${url}"><img src="${url}" alt="Gallery Image"></a>`;
+      galleryContainer.appendChild(galleryItem);
+    });
+  </script>
+</body>
+</html>
